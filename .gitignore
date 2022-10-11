@@ -1,0 +1,15 @@
+*pyc
+venv
+x*
+*.db
+.DS_Store
+logs*
+.vscode
+website/__pycache__
+website/database.db
+*pyc
+venv
+x*
+*.db
+.DS_Store
+logs*
