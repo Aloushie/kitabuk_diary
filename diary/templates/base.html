@@ -32,11 +32,20 @@
         <div class="navbar-nav">
           {% if user.is_authenticated %}
           <a class="nav-item nav-link" id="home" href="/">Home</a>
-          <a class="nav-item nav-link" id="questionnaire" href="/zbi">Interview</a>
-          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+          <!-- <a class="nav-item nav-link" id="questionnaire" href="/zbi">Interview</a> -->
           {% else %}
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+          {% endif %}
+          {% if current_user.is_authenticated and current_user.expert %}
+          <a class="nav-item nav-link" id="unanswered" href="/unanswered">Unanswered Questions</a>
+          {% endif %}
+          {% if current_user.is_authenticated and current_user.admin %}
+          <a class="nav-item nav-link" id="ask" href="/ask">Ask a qestion</a>
+          <a class="nav-item nav-link" id="users" href="/users">users</a>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           {% endif %}
         </div>
       </div>
