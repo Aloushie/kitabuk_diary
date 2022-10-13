@@ -1,14 +1,38 @@
 body {
-    background-color: #f1f0ee;
+    background-color: whitesmoke;
+    font-family: 'Poppins', sans-serif;
 }
 
-.gradient-custom {
-    /* fallback for old browsers */
-    background: #c471f5;
+
+
+
+
+
+a:hover{
+	color: #32be8f;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
   
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1));
-  
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(196, 113, 245, 1), rgba(250, 113, 205, 1))
-  }
+ 
+.btn{
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+.btn:hover{
+	background-position: right;
+}
