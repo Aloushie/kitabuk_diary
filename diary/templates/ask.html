@@ -3,15 +3,17 @@
 
 {% block content %}
       <div class="page-header">
-        <h1>Ask A Question</h1>
+        <br/>
+        <br/>
+        <h1 align="center">Ask Your Question</h1>
       </div>
-      <div class="row">
+      <div class="row" align="center">
         <div class="col-lg-12">
           <div class="well bs-component">
             <form class="form-horizontal" method="POST" action="{{ url_for('views.ask') }}">
               <fieldset>
                 <div class="form-group">
-                  <label for="textArea" class="col-lg-2 control-label" >Ask away!</label>
+                  <!-- <label for="textArea" class="col-lg-2 control-label" >Ask away!</label> -->
                     <div class="col-lg-10">
                       <textarea class="form-control" name="question" rows="3" id="textArea" placeholder="Enter question here"></textarea>
                     </div>

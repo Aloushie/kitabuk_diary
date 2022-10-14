@@ -13,7 +13,7 @@ def home():
     if request.method == 'POST':
         note = request.form.get('note')
 
-        if len(note) < 3:
+        if len(note) < 2:
             flash('Entry is too short! Your diary entry must be at least 3 characters ', category='error')
         else:
             new_note = Note(data=note, user_id=current_user.id)
