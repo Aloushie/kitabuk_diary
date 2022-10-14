@@ -4,10 +4,6 @@ body {
 }
 
 
-
-
-
-
 a:hover{
 	color: #32be8f;
     background-color: transparent;
@@ -18,7 +14,7 @@ a:hover{
  
 .btn{
 	display: block;
-	width: 100%;
+	width: 20%;
 	height: 50px;
 	border-radius: 25px;
 	outline: none;
@@ -32,7 +28,16 @@ a:hover{
 	margin: 1rem 0;
 	cursor: pointer;
 	transition: .5s;
+	margin: auto;
+	padding: 0.5% 0 0
 }
 .btn:hover{
 	background-position: right;
+}
+
+
+.form-group {
+	width: 70%;
+	padding: 3.5% 0 0;
+	margin: auto;
 }
