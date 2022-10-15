@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note, Quest, Question, User
+from .models import Note, Quest, Question, User, Todo
 from . import db
 import json
 
@@ -176,3 +176,40 @@ def answer_page():
     }
     
     return render_template("answer_page.html", user=current_user, **context)
+
+@views.route('/todo')
+@login_required
+def todo():
+    todo = Todo.query.all()
+    return render_template("todo.html", todo=todo, user=current_user)
+
+
+@views.route("/add", methods=['POST'])
+@login_required
+def add():
+    if request.method == 'POST':
+        title = request.form.get("title")
+        new_todo = Todo(title=title, complete=False, user_id=current_user.id)
+        db.session.add(new_todo)
+        db.session.commit()
+        flash('Todo item added!', category='success')
+        
+    return render_template("todo.html", user=current_user)
+
+    
+@views.route("/update/<int:todo_id>")
+@login_required
+def update(todo_id):
+    todo = Todo.query.filter_by(id=todo_id).first()
+    todo.complete = not todo.complete
+    db.session.commit()
+    return redirect(url_for("views.todo"))
+
+
+@views.route("/delete/<int:todo_id>")
+@login_required
+def delete(todo_id):
+    todo = Todo.query.filter_by(id=todo_id).first()
+    db.session.delete(todo)
+    db.session.commit()
+    return redirect(url_for("views.todo"))

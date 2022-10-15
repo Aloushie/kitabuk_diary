@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     notes = db.relationship('Note')
     entries = db.relationship('Quest')
+    todos = db.relationship('Todo')
     expert = db.Column(db.Boolean)
     admin = db.Column(db.Boolean)
 
@@ -44,5 +45,12 @@ class Question(db.Model):
 class Quest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     entry = db.Column(db.String(10000))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    complete = db.Column(db.Boolean)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
