@@ -79,9 +79,10 @@ def ask():
 
         db.session.add(question)
         db.session.commit()
+        flash('Your message has been sent!', category='success')
 
-        return redirect(url_for('views.home'))
-     
+        return redirect(url_for('views.ask'))
+        
     experts = User.query.filter_by(expert=True).all()
     context = {
         'experts' : experts
@@ -169,7 +170,7 @@ def promote(user_id):
 @views.route('/answers')
 @login_required
 def answer_page():
-    questions = Question.query.filter(Question.answer != None).all()
+    questions = Question.query.filter(Question.answer != None).all() 
 
     context = {
         'questions' : questions

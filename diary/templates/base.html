@@ -34,21 +34,20 @@
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
           {% if user.is_authenticated %}
-          <a class="nav-item nav-link" id="home" href="/">Home</a>
+          </a>
+          <a class="nav-item nav-link" id="home" href="/">Diary</a>
           <a class="nav-item nav-link" id="todo" href="/todo">Todo List</a>
           <!-- <a class="nav-item nav-link" id="questionnaire" href="/zbi">Interview</a> -->
           {% else %}
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
           {% endif %}
-          {% if current_user.is_authenticated and current_user.expert %}
-          <a class="nav-item nav-link" id="unanswered" href="/unanswered">Unanswered Questions</a>
-          {% endif %}
           {% if current_user.is_authenticated and current_user.admin %}
           <a class="nav-item nav-link" id="ask" href="/ask">Ask</a>
-          <a class="nav-item nav-link" id="users" href="/users">Users</a>
+          <!-- <a class="nav-item nav-link" id="users" href="/users">Users</a> -->
           {% endif %}
           {% if user.is_authenticated %}
+          <a class="nav-item nav-link" id="unanswered" href="/unanswered">Unanswered Questions</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           {% endif %}
         </div>
@@ -103,8 +102,12 @@
     <div class="row text-center text-md-left mt-3 pb-3">
       <!-- Grid column -->
       <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-        <h6 class="text-uppercase mb-4 font-weight-bold">Digital Diary Prototype/MVP</h6>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit animi voluptatem quidem ducimus placeat nulla voluptatibus at voluptatum dolorem explicabo libero accusantium, voluptate veritatis quod, quasi impedit deleniti itaque doloremque.
+        <h6 class="text-uppercase mb-4 font-weight-bold">Digital Diary Prototype | MVP</h6>
+        <p>
+          Thank you for visiting Kitabuk - a prototype digital diary.
+        </p>
+        <p>
+          Make sure to send any queries through email or LinkedIn (see contact).
         </p>
       </div>
       <!-- Grid column -->
@@ -113,16 +116,24 @@
 
       <hr class="w-100 clearfix d-md-none">
 
-      <!-- Grid column -->
-      <hr class="w-100 clearfix d-md-none">
-
-      <!-- Grid column -->
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
         <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
         <p>
           <i class="fas fa-home mr-3"></i>LinkedIn: <a href="https://uk.linkedin.com/in/ali-atieh-22b565207">Ali Atieh</a></p>
         <p>
           <i class="fas fa-envelope mr-3"></i>Email: AtiehA@cardiff.ac.uk</p>
+      </div>
+
+      <!-- Grid column -->
+      <hr class="w-100 clearfix d-md-none">
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h6 class="text-uppercase mb-4 font-weight-bold">Further Information</h6>
+        <p>
+          <i class="fas fa-home mr-3"></i>TBD</a></p>
+        <p>
+          <i class="fas fa-envelope mr-3"></i>TBD</p>
       </div>
     </div>
   </div>

@@ -4,7 +4,6 @@
   <br/>
   <h1 align="center">{{ user.first_name }}'s Diary Entries</h1>
   <br/>
-  <br/>
   <ul class="list-group list-group-flush" id="notes">
     {% for note in user.notes %}
     <li class="list-group-item">
@@ -22,7 +21,7 @@
     </div>
     <br />
     <div align="center">
-      <button type="submit" class="btn btn-primary">Add entry</button>
+      <button type="submit" class="ui inverted green button">Add entry</button>
     </div>
   </form>
   {% endblock %}
