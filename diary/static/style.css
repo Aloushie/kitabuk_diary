@@ -5,14 +5,14 @@ body {
 }
 
 
-/* a:hover{
+a:hover{
 	color: #32be8f;
     background-color: transparent;
     text-decoration: underline;
 }
 
   
- 
+ /* 
 .btn{
 	display: block;
 	width: 20%;

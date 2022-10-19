@@ -103,6 +103,7 @@ def answer(question_id):
     if request.method == 'POST':
         question.answer = request.form['answer']
         db.session.commit()
+        flash('Your have answered the question!', category='success')
 
         return redirect(url_for('views.unanswered'))
 
