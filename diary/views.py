@@ -14,7 +14,7 @@ def home():
         note = request.form.get('note')
 
         if len(note) < 2:
-            flash('Entry is too short! Your diary entry must be at least 3 characters ', category='error')
+            flash('Entry is too short! Your diary entry must be at least 2 characters ', category='error')
         else:
             new_note = Note(data=note, user_id=current_user.id)
             db.session.add(new_note)
@@ -195,6 +195,9 @@ def todo():
 def add():
     if request.method == 'POST':
         title = request.form.get("title")
+    if len(title) < 2:
+        flash('Entry is too short! Your diary entry must be at least 2 characters ', category='error')
+    else:
         new_todo = Todo(title=title, complete=False, user_id=current_user.id)
         db.session.add(new_todo)
         db.session.commit()
