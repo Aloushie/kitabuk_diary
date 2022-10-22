@@ -22,7 +22,8 @@
     <title>{% block title %}Home{% endblock %}</title>
   </head>
   <body>   
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <button
         class="navbar-toggler"
         type="button"
@@ -32,28 +33,42 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar">
-        <div class="navbar-nav">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           {% if user.is_authenticated %}
-          </a>
-          <a class="nav-item nav-link" id="home" href="/">Diary</a>
-          <a class="nav-item nav-link" id="todo" href="/todo">Todo List</a>
-          <!-- <a class="nav-item nav-link" id="questionnaire" href="/zbi">Interview</a> -->
+          <li class="nav-item active">
+            <a class="nav-item nav-link" id="home" href="/">Diary</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" id="todo" href="/todo">Todo List</a>
+          </li>
           {% else %}
-          <a class="nav-item nav-link" id="login" href="/login">Login</a>
-          <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+          <li class="nav-item">
+            <a class="nav-item nav-link" id="login" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+          </li>
           {% endif %}
           {% if current_user.is_authenticated and current_user.admin %}
-          <a class="nav-item nav-link" id="ask" href="/ask">Ask</a>
-          <!-- <a class="nav-item nav-link" id="users" href="/users">Users</a> -->
+          <li class="nav-item">
+            <a class="nav-item nav-link" id="ask" href="/ask">Ask</a>
+          </li>
           {% endif %}
           {% if current_user.is_authenticated and current_user.expert %}
+          <li class="nav-item">
           <a class="nav-item nav-link" id="unanswered" href="/unanswered">Questions</a>
+          </li>
           {% endif %}
           {% if user.is_authenticated %}
           <a class="nav-item nav-link" id="answer_page" href="/answers">Answered Questions</a>
+          {% endif %}
+        </ul>
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav">
+          <a class="nav-item nav-link" id="account" href="/account">Account</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
           {% endif %}
-        </div>
+        </ul>
       </div>
     </nav>
 
@@ -122,9 +137,9 @@
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
         <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
         <p>
-          <i class="fas fa-home mr-3"></i>LinkedIn: <a href="https://uk.linkedin.com/in/ali-atieh-22b565207">Ali Atieh</a></p>
+          <i class="fa fa-caret-square-o-right"></i> LinkedIn: <a href="https://uk.linkedin.com/in/ali-atieh-22b565207">Ali Atieh</a></p>
         <p>
-          <i class="fas fa-envelope mr-3"></i>Email: AtiehA@cardiff.ac.uk</p>
+          <i class="fa fa-caret-square-o-right"></i> Email: AtiehA@cardiff.ac.uk</p>
       </div>
 
       <!-- Grid column -->
@@ -134,9 +149,9 @@
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
         <h6 class="text-uppercase mb-4 font-weight-bold">Further Information</h6>
         <p>
-          <i class="fas fa-home mr-3"></i>TBD</a></p>
+          <i class="fa fa-caret-square-o-right"></i>TBD</a></p>
         <p>
-          <i class="fas fa-envelope mr-3"></i>TBD</p>
+          <i class="fa fa-caret-square-o-right"></i>TBD</p>
       </div>
     </div>
   </div>

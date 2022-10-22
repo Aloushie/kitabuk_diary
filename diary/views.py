@@ -1,6 +1,10 @@
+import secrets
+import os
+from PIL import Image
 from flask import Blueprint, render_template, redirect, url_for, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Note, Quest, Question, User, Todo
+from .forms import UpdateAccountForm
 from . import db
 import json
 
@@ -222,3 +226,32 @@ def delete(todo_id):
     db.session.delete(todo)
     db.session.commit()
     return redirect(url_for("views.todo"))
+
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(views.root_path, 'static/img', picture_fn)
+
+    output_size = (125, 125)
+    i = Image.open(form_picture)
+    i.thumbnail(output_size)
+    i.save(picture_path)
+
+    return picture_fn
+
+
+
+@views.route("/account", methods=['GET', 'POST'])
+@login_required
+def account():
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            current_user.image_file = picture_file
+            db.session.commit()
+    image_file = url_for('static', filename='img/' + current_user.image_file)
+    return render_template('account.html', user=current_user, 
+                            image_file=image_file, form=form)
