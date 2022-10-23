@@ -6,15 +6,6 @@ function deleteNote(noteId) {
       window.location.href = "/";
     });
   }
-
-  // function deleteEnter(enterId) {
-  //   fetch("/delete-enter", {
-  //     method: "POST",
-  //     body: JSON.stringify({ enterId: enterId }),
-  //   }).then((_res) => {
-  //     window.location.href = "/";
-  //   });
-  // }
   
   $(document).ready(function () {
     // example: https://getbootstrap.com/docs/4.2/components/modal/
