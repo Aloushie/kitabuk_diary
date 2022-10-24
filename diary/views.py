@@ -227,3 +227,8 @@ def account():
     image_file = url_for('static', filename='img/' + current_user.image_file)
     return render_template('account.html', user=current_user, 
                             image_file=image_file, form=form)
+
+
+@views.route("/about")
+def about():
+    return render_template('about.html', user=current_user)
