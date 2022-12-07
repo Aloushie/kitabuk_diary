@@ -10,6 +10,7 @@ DB_NAME = "database.db"
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = '5b28703b32c828ab64990c617b4e567b62076e79038a8688'
+    #create db using sqlite and mysql
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}' 
     db.init_app(app)
 
@@ -36,6 +37,7 @@ def create_app():
 
 def create_database(app):
     if not path.exists('website/' + DB_NAME):
+        #with context required after flask update
         with app.app_context():
             db.create_all()
             print('Created Database!')

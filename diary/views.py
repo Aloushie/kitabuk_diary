@@ -10,7 +10,7 @@ import json
 
 views = Blueprint('views', __name__)
 
-
+# Diary entry feature
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
@@ -27,6 +27,7 @@ def home():
 
     return render_template("home.html", user=current_user)
 
+# Delete diary entry feature
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
     note = json.loads(request.data)
@@ -39,7 +40,7 @@ def delete_note():
             flash('Entry deleted!', category='success')
     return jsonify({})
 
-
+# Q&A ask a question feature
 @views.route('/ask', methods=['GET', 'POST'])
 @login_required
 def ask():
@@ -67,7 +68,7 @@ def ask():
     return render_template('ask.html', user=current_user, **context)
 
     
-
+# Q&A answer a question faeture
 @views.route('/answer/<int:question_id>', methods=['GET', 'POST'])
 @login_required
 def answer(question_id):
@@ -159,6 +160,7 @@ def answer_page():
     
     return render_template("answer_page.html", user=current_user, **context)
 
+# To-do list feature
 @views.route('/todo')
 @login_required
 def todo():
@@ -166,6 +168,7 @@ def todo():
     return render_template("todo.html", todo=todo, user=current_user)
 
 
+# Add items to to-do list
 @views.route("/add", methods=['POST'])
 @login_required
 def add():
@@ -181,7 +184,7 @@ def add():
         
     return render_template("todo.html", user=current_user)
 
-    
+# Update to-do list feature
 @views.route("/update/<int:todo_id>")
 @login_required
 def update(todo_id):
@@ -190,7 +193,7 @@ def update(todo_id):
     db.session.commit()
     return redirect(url_for("views.todo"))
 
-
+# Delete to-do item feature
 @views.route("/delete/<int:todo_id>")
 @login_required
 def delete(todo_id):
@@ -199,7 +202,7 @@ def delete(todo_id):
     db.session.commit()
     return redirect(url_for("views.todo"))
 
-
+# Account profile image feature
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
@@ -212,7 +215,6 @@ def save_picture(form_picture):
     i.save(picture_path)
 
     return picture_fn
-
 
 
 @views.route("/account", methods=['GET', 'POST'])

@@ -7,6 +7,7 @@ from flask_login import login_user, login_required, logout_user, current_user
 
 auth = Blueprint('auth', __name__)
 
+#Routes for account feature - sign-up, login and logout features
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
